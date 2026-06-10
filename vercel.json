@@ -4,10 +4,7 @@
   "installCommand": "npm install",
   "framework": "nextjs",
   "env": {
-    "NEXT_PUBLIC_APP_URL": {
-      "description": "Application URL",
-      "required": false
-    }
+    "NEXT_PUBLIC_APP_URL": ""
   },
   "rewrites": [
     {
