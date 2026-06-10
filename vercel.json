@@ -9,14 +9,6 @@
       "required": false
     }
   },
-  "nodeVersion": "18.x",
-  "functions": {
-    "api/**/*.{ts,js}": {
-      "runtime": "nodejs18.x",
-      "memory": 1024,
-      "maxDuration": 30
-    }
-  },
   "rewrites": [
     {
       "source": "/:path*",
