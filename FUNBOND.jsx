@@ -389,6 +389,8 @@ const InteractiveCard = ({ icon, title, description, gradient, index, stats }) =
 };
 
 // ==================== ATTRACTIONS SECTION ====================
+import React from 'react';
+
 const AttractionsSection = () => {
   const attractions = [
     {
@@ -396,9 +398,28 @@ const AttractionsSection = () => {
       title: 'Bowling',
       description: 'Premium lanes with automatic scoring. Challenge friends and family!',
       gradient: 'bg-gradient-to-br from-blue-600/40 to-blue-400/20',
-      stats: [
-        { value: '12', label: 'Premium Lanes' }
-      ]
+      stats: [{ value: '12', label: 'Premium Lanes' }]
+    },
+    {
+      icon: '🕹️',
+      title: 'Arcade Zone',
+      description: 'Massive selection of classic retro cabinets and modern high-tech simulator games.',
+      gradient: 'bg-gradient-to-br from-purple-600/40 to-purple-400/20',
+      stats: [{ value: '50+', label: 'Active Games' }]
+    },
+    {
+      icon: '🥽',
+      title: 'VR Arena',
+      description: 'Immerse yourself completely in state-of-the-art virtual reality multiplayer battlegrounds.',
+      gradient: 'bg-gradient-to-br from-cyan-600/40 to-cyan-400/20',
+      stats: [{ value: '4', label: 'VR Stations' }]
+    },
+    {
+      icon: '🎁',
+      title: 'Gifts & Prizes',
+      description: 'Redeem your arcade tickets and prize points for premium gaming gear, collectibles, and gadgets.',
+      gradient: 'bg-gradient-to-br from-amber-600/40 to-amber-400/20',
+      stats: [{ value: '100+', label: 'Prize Options' }]
     }
   ];
 
@@ -407,16 +428,18 @@ const AttractionsSection = () => {
       <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
         Our Attractions
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {attractions.map((item, index) => (
-          <div key={index} className={`p-6 rounded-2xl border border-white/10 ${item.gradient} backdrop-blur-md transition-all duration-300 hover:scale-105`}>
-            <span className="text-4xl mb-4 block">{item.icon}</span>
-            <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-            <p className="text-gray-400 mb-6">{item.description}</p>
-            <div className="border-t border-white/10 pt-4">
+          <div key={index} className={`p-6 rounded-2xl border border-white/10 ${item.gradient} backdrop-blur-md transition-all duration-300 hover:scale-105 flex flex-col justify-between`}>
+            <div>
+              <span className="text-4xl mb-4 block">{item.icon}</span>
+              <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
+              <p className="text-gray-400 mb-6 text-sm">{item.description}</p>
+            </div>
+            <div className="border-t border-white/10 pt-4 mt-auto">
               {item.stats.map((stat, i) => (
                 <div key={i} className="flex justify-between items-center">
-                  <span className="text-gray-400">{stat.label}</span>
+                  <span className="text-gray-400 text-xs">{stat.label}</span>
                   <span className="text-xl font-bold text-cyan-400">{stat.value}</span>
                 </div>
               ))}
@@ -431,7 +454,6 @@ const AttractionsSection = () => {
 const FUNBOND = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-white selection:bg-cyan-500/30 selection:text-cyan-400">
-      {/* Hero Section or main wrapper element */}
       <main>
         <AttractionsSection />
       </main>
@@ -440,3 +462,6 @@ const FUNBOND = () => {
 };
 
 export default FUNBOND;
+
+
+
