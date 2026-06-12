@@ -1,5 +1,12 @@
 import React from 'react';
 
+// Relative imports from the exact same directory as this file
+import img1 from './image1.jpg';
+import img2 from './image2.jpg';
+import img3 from './image3.jpg';
+import img4 from './image4.jpg';
+import img5 from './image5.jpg';
+
 const Navigation = () => {
   return (
     <nav className="w-full border-b border-white/10 bg-slate-950/40 backdrop-blur-xl sticky top-0 z-50">
@@ -150,11 +157,11 @@ const ZonesSection = () => {
 
 const ImageGallerySection = () => {
   const liveGallery = [
-    { src: '/image1.jpg', span: 'md:col-span-3 min-h-[400px]' },
-    { src: '/image2.jpg', span: 'md:col-span-2 min-h-[400px]' },
-    { src: '/image3.jpg', span: 'md:col-span-2 min-h-[320px]' },
-    { src: '/image4.jpg', span: 'md:col-span-3 min-h-[320px]' },
-    { src: '/image5.jpg', span: 'md:col-span-5 min-h-[380px]' }
+    { moduleSrc: img1, span: 'md:col-span-3 min-h-[400px]' },
+    { moduleSrc: img2, span: 'md:col-span-2 min-h-[400px]' },
+    { moduleSrc: img3, span: 'md:col-span-2 min-h-[320px]' },
+    { moduleSrc: img4, span: 'md:col-span-3 min-h-[320px]' },
+    { moduleSrc: img5, span: 'md:col-span-5 min-h-[380px]' }
   ];
 
   return (
@@ -174,10 +181,8 @@ const ImageGallerySection = () => {
             >
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ backgroundImage: `url('${img.src}')` }}
+                style={{ backgroundImage: `url('${typeof img.moduleSrc === 'string' ? img.moduleSrc : img.moduleSrc?.src || ''}')` }}
               />
-              
-              {/* Subtle glass glow border interaction on card hover */}
               <div className="absolute inset-0 border border-transparent group-hover:border-cyan-500/20 rounded-3xl transition-all duration-300 pointer-events-none" />
             </div>
           ))}
