@@ -1,448 +1,147 @@
-'use client';
-
-import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import gsap from 'gsap';
-
-// ==================== CUSTOM CURSOR ====================
-const CustomCursor = () => {
-  const cursorRef = useRef(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      
-      if (cursorRef.current) {
-        gsap.to(cursorRef.current, {
-          x: e.clientX - 15,
-          y: e.clientY - 15,
-          duration: 0.05,
-          ease: 'power2.out',
-        });
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  return (
-    <div
-      ref={cursorRef}
-      className="fixed w-8 h-8 pointer-events-none z-50 hidden lg:block"
-      style={{
-        border: '2px solid #FF006E',
-        borderRadius: '50%',
-        boxShadow: '0 0 10px #FF006E, inset 0 0 10px rgba(255, 0, 110, 0.3)',
-        backdropFilter: 'blur(2px)',
-      }}
-    >
-      <div
-        className="absolute w-2 h-2 bg-gradient-to-r from-FF006E to-FFD700 rounded-full"
-        style={{
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          boxShadow: '0 0 10px #FF006E',
-        }}
-      />
-    </div>
-  );
-};
-
-// ==================== ANIMATED BACKGROUND ====================
-const AnimatedBackground = () => {
-  return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden">
-      {/* Animated gradient orbs */}
-      <motion.div
-        className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, rgba(255, 0, 110, 0.15), transparent)',
-        }}
-        animate={{
-          x: [0, 100, -50, 0],
-          y: [0, 50, 100, 0],
-        }}
-        transition={{ duration: 15, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, rgba(0, 255, 0, 0.1), transparent)',
-        }}
-        animate={{
-          x: [0, -100, 50, 0],
-          y: [0, -50, -100, 0],
-        }}
-        transition={{ duration: 20, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/2 w-96 h-96 rounded-full blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, rgba(0, 128, 255, 0.1), transparent)',
-          transform: 'translate(-50%, -50%)',
-        }}
-        animate={{
-          scale: [1, 1.2, 0.8, 1],
-        }}
-        transition={{ duration: 12, repeat: Infinity }}
-      />
-    </div>
-  );
-};
-
-// ==================== FLOATING PARTICLES ====================
-const FloatingParticles = () => {
-  const particles = useMemo(() => {
-    return Array.from({ length: 30 }).map((_, i) => ({
-      id: i,
-      size: Math.random() * 2 + 1,
-      duration: Math.random() * 6 + 8,
-      delay: Math.random() * 3,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      color: ['#FF006E', '#FFD700', '#00FF00'][Math.floor(Math.random() * 3)],
-    }));
-  }, []);
-
-  return (
-    <div className="fixed inset-0 pointer-events-none">
-      {particles.map((particle) => (
-        <motion.div
-          key={particle.id}
-          className="absolute rounded-full"
-          style={{
-            width: particle.size,
-            height: particle.size,
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            background: particle.color,
-            boxShadow: `0 0 ${particle.size * 3}px ${particle.color}`,
-          }}
-          animate={{
-            y: [0, -300, 0],
-            opacity: [0, 0.8, 0],
-            scale: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: particle.duration,
-            delay: particle.delay,
-            repeat: Infinity,
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
-// ==================== SCROLL PROGRESS ====================
-const ScrollProgress = () => {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setProgress(scrolled);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 h-1 bg-gradient-to-r from-FF006E via-FFD700 to-00FF00 z-40"
-      style={{ width: `${progress}%` }}
-    />
-  );
-};
-
-// ==================== HERO SECTION ====================
-const HeroSection = () => {
-  const [isHovered, setIsHovered] = useState(null);
-
-  const floatingItems = [
-    { emoji: '🎳', label: 'Bowling', angle: 0 },
-    { emoji: '👾', label: 'Arcade', angle: 72 },
-    { emoji: '🥽', label: 'VR', angle: 144 },
-    { emoji: '🏎️', label: 'Racing', angle: 216 },
-    { emoji: '🎰', label: 'Prizes', angle: 288 },
-  ];
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#0a0e27] via-[#1a1a3e] to-[#0a0e27] py-20">
-      <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
-        {/* Animated title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-8"
-        >
-          <h1 className="text-6xl md:text-8xl font-black mb-4" style={{
-            background: 'linear-gradient(135deg, #FF006E, #FFD700, #00FF00, #0080FF)',
-            backgroundSize: '200% 200%',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            animation: 'gradient 8s ease infinite',
-          }}>
-            FunBond
-          </h1>
-          <motion.div
-            animate={{
-              textShadow: [
-                '0 0 20px rgba(255, 0, 110, 0.5)',
-                '0 0 40px rgba(255, 215, 0, 0.5)',
-                '0 0 20px rgba(255, 0, 110, 0.5)',
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity }}
-            className="text-2xl md:text-3xl font-bold text-[#00FF00]"
-          >
-            Let's Play & Bond
-          </motion.div>
-        </motion.div>
-
-        {/* Floating items circle */}
-        <div className="relative w-80 h-80 mx-auto mb-16">
-          {floatingItems.map((item, index) => {
-            const x = Math.cos((item.angle * Math.PI) / 180) * 150;
-            const y = Math.sin((item.angle * Math.PI) / 180) * 150;
-
-            return (
-              <motion.div
-                key={index}
-                className="absolute cursor-pointer"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1, x, y }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                onHoverStart={() => setIsHovered(index)}
-                onHoverEnd={() => setIsHovered(null)}
-                whileHover={{ scale: 1.4, filter: 'drop-shadow(0 0 20px #FF006E)' }}
-              >
-                <motion.div
-                  className="text-6xl drop-shadow-lg"
-                  animate={isHovered === index ? { rotateZ: 360 } : { rotateZ: 0 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  {item.emoji}
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={isHovered === index ? { opacity: 1, y: 10 } : { opacity: 0, y: -10 }}
-                  className="text-xs font-bold text-[#FFD700] mt-2 whitespace-nowrap"
-                >
-                  {item.label}
-                </motion.div>
-              </motion.div>
-            );
-          })}
-
-          {/* Center glow */}
-          <motion.div
-            className="absolute inset-0 rounded-full"
-            style={{
-              boxShadow: '0 0 60px rgba(255, 0, 110, 0.4), inset 0 0 60px rgba(255, 0, 110, 0.2)',
-            }}
-            animate={{
-              boxShadow: [
-                '0 0 60px rgba(255, 0, 110, 0.4), inset 0 0 60px rgba(255, 0, 110, 0.2)',
-                '0 0 100px rgba(255, 215, 0, 0.6), inset 0 0 100px rgba(255, 215, 0, 0.3)',
-                '0 0 60px rgba(255, 0, 110, 0.4), inset 0 0 60px rgba(255, 0, 110, 0.2)',
-              ],
-            }}
-            transition={{ duration: 4, repeat: Infinity }}
-          />
-        </div>
-
-        {/* CTA Buttons */}
-        <motion.div
-          className="flex flex-col md:flex-row gap-6 justify-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <motion.button
-            className="group relative px-10 py-4 rounded-xl font-bold text-lg text-white overflow-hidden"
-            style={{
-              background: 'linear-gradient(135deg, #FF006E, #FFD700)',
-              boxShadow: '0 0 30px rgba(255, 0, 110, 0.4)',
-            }}
-            whileHover={{ scale: 1.05, boxShadow: '0 0 50px rgba(255, 0, 110, 0.8)' }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              🎮 Explore Games
-            </span>
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0"
-              whileHover={{ opacity: 0.2 }}
-              transition={{ duration: 0.5 }}
-            />
-          </motion.button>
-
-          <motion.button
-            className="px-10 py-4 rounded-xl font-bold text-lg text-[#FF006E] border-2 border-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all"
-            style={{
-              boxShadow: '0 0 20px rgba(255, 0, 110, 0.3)',
-            }}
-            whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(255, 0, 110, 0.6)' }}
-            whileTap={{ scale: 0.95 }}
-          >
-            📍 Visit Today
-          </motion.button>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="text-center"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <p className="text-[#00FF00] text-sm mb-2">Scroll to explore</p>
-          <p className="text-2xl">⬇️</p>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-// ==================== INTERACTIVE CARD ====================
-const InteractiveCard = ({ icon, title, description, gradient, index, stats }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
-
-  return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.6 }}
-      viewport={{ once: true }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      className="group h-96 rounded-3xl overflow-hidden cursor-pointer relative"
-    >
-      {/* Background */}
-      <div className={`absolute inset-0 ${gradient} transition-all duration-300`} />
-      
-      {/* Animated background overlay */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0"
-        animate={{ opacity: isHovered ? 0.3 : 0 }}
-      />
-
-      {/* Border glow */}
-      <motion.div
-        className="absolute inset-0 rounded-3xl border-2 border-transparent"
-        animate={{
-          borderColor: isHovered ? 'rgba(255, 0, 110, 0.6)' : 'rgba(255, 0, 110, 0.1)',
-          boxShadow: isHovered
-            ? '0 0 40px rgba(255, 0, 110, 0.5), inset 0 0 40px rgba(255, 0, 110, 0.1)'
-            : 'none',
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10 h-full p-8 flex flex-col justify-between">
-        <motion.div
-          animate={{
-            scale: isHovered ? 1.3 : 1,
-            rotateZ: isHovered ? 10 : 0,
-          }}
-          className="text-6xl mb-4"
-        >
-          {icon}
-        </motion.div>
-
-        <div>
-          <h3 className="text-2xl font-bold text-white mb-3">{title}</h3>
-          <p className="text-white/80 text-sm mb-6">{description}</p>
-          
-          {/* Stats */}
-          {stats && (
-            <div className="grid grid-cols-2 gap-2 mb-6">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="bg-white/10 rounded-lg p-2">
-                  <p className="text-[#FFD700] font-bold text-sm">{stat.value}</p>
-                  <p className="text-white/60 text-xs">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <motion.button
-          animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
-          className="px-6 py-2 rounded-lg bg-white/20 hover:bg-white/30 text-white font-semibold text-sm transition-colors backdrop-blur-sm border border-white/30"
-        >
-          Explore →
-        </motion.button>
-      </div>
-    </motion.div>
-  );
-};
-
-// ==================== ATTRACTIONS SECTION ====================
 import React from 'react';
 
-const AttractionsSection = () => {
-  const attractions = [
+const Navigation = () => {
+  return (
+    <nav className="w-full border-b border-white/10 bg-slate-950/40 backdrop-blur-xl sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-cyan-400 to-indigo-500 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+            <span className="text-slate-950 font-black text-xl">F</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl font-black tracking-wider bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+              FUNBOND
+            </span>
+            <span className="text-[9px] uppercase tracking-widest text-cyan-400 font-extrabold">
+              Goldie Cinemark Edition
+            </span>
+          </div>
+        </div>
+        
+        <div className="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <a href="#arena" className="hover:text-cyan-400 transition-colors duration-200">The Arena</a>
+          <a href="#zones" className="hover:text-cyan-400 transition-colors duration-200">Experience Zones</a>
+          <a href="#gallery" className="hover:text-cyan-400 transition-colors duration-200">Media Hub</a>
+        </div>
+
+        <div>
+          <button 
+            onClick={() => document.getElementById('zones')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-6 py-3 bg-white/5 border border-white/10 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-white/10 hover:border-cyan-500/40 transition-all duration-300"
+          >
+            Explore Zones
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+const HeroSection = () => {
+  return (
+    <div id="arena" className="relative isolate overflow-hidden min-h-[85vh] flex flex-col justify-center items-center text-center px-6">
+      {/* Dynamic 3D Perspective Grid Background */}
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:5rem_5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-25 animate-pulse" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-cyan-500/10 via-purple-500/5 to-transparent rounded-full blur-[140px] -z-10" />
+
+      <div className="max-w-5xl mx-auto space-y-8 relative">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md text-cyan-400 text-xs font-bold uppercase tracking-widest shadow-[inset_0_1px_1px_rgba(25,255,255,0.1)]">
+          ⚡ Ultra-Premium Entertainment Hub
+        </div>
+        
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase text-white leading-none">
+          UNLEASH THE <br />
+          <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-indigo-500 bg-clip-text text-transparent filter drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+            ADRENALINE
+          </span>
+        </h1>
+        
+        <p className="text-slate-400 text-sm md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
+          Welcome to FunBond at Goldie Cinemark. Five systematically engineered amusement micro-environments designed for peak interactive play, competition, and relaxation.
+        </p>
+
+        <div className="pt-4">
+          <button 
+            onClick={() => document.getElementById('zones')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-extrabold text-xs uppercase tracking-widest rounded-xl shadow-[0_0_30px_rgba(34,211,238,0.3)] hover:scale-105 transition-all duration-300"
+          >
+            Access Space Matrix
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ZonesSection = () => {
+  const zones = [
     {
-      icon: '🎳',
-      title: 'Bowling',
-      description: 'Premium lanes with automatic scoring. Challenge friends and family!',
-      gradient: 'bg-gradient-to-br from-blue-600/40 to-blue-400/20',
-      stats: [{ value: '12', label: 'Premium Lanes' }]
+      num: '01',
+      title: 'Softplay Area',
+      tagline: 'ADVENTURE & EXPLORATION',
+      description: 'An expansive, vibrant multilayer obstacle landscape engineered with soft materials, slides, and sensory climbing arrays for high-energy youthful recreation.',
+      stat: 'Safe Dynamic Play',
+      shadow: 'hover:shadow-[0_0_50px_rgba(34,211,238,0.15)] hover:border-cyan-500/30'
     },
     {
-      icon: '🕹️',
-      title: 'Arcade Zone',
-      description: 'Massive selection of classic retro cabinets and modern high-tech simulator games.',
-      gradient: 'bg-gradient-to-br from-purple-600/40 to-purple-400/20',
-      stats: [{ value: '50+', label: 'Active Games' }]
+      num: '02',
+      title: 'Arcade Area',
+      tagline: 'NEXT-GEN SIMULATION GRID',
+      description: 'A massive custom ecosystem packed with classic retro cabinets, modern e-sports simulators, and high-frequency ticket-dispensing systems using seamless card tap integration.',
+      stat: '50+ Interactive Units',
+      shadow: 'hover:shadow-[0_0_50px_rgba(168,85,247,0.15)] hover:border-purple-500/30'
     },
     {
-      icon: '🥽',
-      title: 'VR Arena',
-      description: 'Immerse yourself completely in state-of-the-art virtual reality multiplayer battlegrounds.',
-      gradient: 'bg-gradient-to-br from-cyan-600/40 to-cyan-400/20',
-      stats: [{ value: '4', label: 'VR Stations' }]
+      num: '03',
+      title: 'VR Area',
+      tagline: 'HYPER-IMMERSIVE MATRIX',
+      description: 'Untethered multi-user sandbox systems with omnidirectional tracking arrays. Dissolve real-world parameters across high-fidelity simulated combat matrices.',
+      stat: '4 Synchronized Bays',
+      shadow: 'hover:shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:border-blue-500/30'
     },
     {
-      icon: '🎁',
-      title: 'Gifts & Prizes',
-      description: 'Redeem your arcade tickets and prize points for premium gaming gear, collectibles, and gadgets.',
-      gradient: 'bg-gradient-to-br from-amber-600/40 to-amber-400/20',
-      stats: [{ value: '100+', label: 'Prize Options' }]
+      num: '04',
+      title: 'Bowling Area',
+      tagline: 'LUXURY BOUTIQUE LANES',
+      description: 'Hardwood pro-tier alleys complete with reactive glowing lane architecture, advanced instant automated telemetry screens, and high-fidelity sensory acoustics.',
+      stat: '12 Executive Lanes',
+      shadow: 'hover:shadow-[0_0_50px_rgba(245,158,11,0.15)] hover:border-amber-500/30'
+    },
+    {
+      num: '05',
+      title: 'The Cafeteria',
+      tagline: 'PREMIUM GOURMET LOUNGE',
+      description: 'Refuel and recharge inside our luxurious glass-clad dining hub. Serving hand-crafted gourmet selections, premium refreshers, and signature casual plates.',
+      stat: 'Full Dining Menu',
+      shadow: 'hover:shadow-[0_0_50px_rgba(239,68,68,0.15)] hover:border-red-500/30'
     }
   ];
 
   return (
-    <section className="py-20 px-4 max-w-7xl mx-auto">
-      <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-        Our Attractions
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {attractions.map((item, index) => (
-          <div key={index} className={`p-6 rounded-2xl border border-white/10 ${item.gradient} backdrop-blur-md transition-all duration-300 hover:scale-105 flex flex-col justify-between`}>
+    <section id="zones" className="py-28 px-6 max-w-[90rem] mx-auto scroll-mt-20">
+      <div className="mb-20 text-center space-y-4">
+        <span className="text-xs font-black tracking-widest text-cyan-400 uppercase block">Spatial Configurations</span>
+        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">THE FIVE EXPERIENTIAL ZONES</h2>
+      </div>
+
+      {/* Expanded 5-Column Bento Grid with High-Fidelity Glassmorphism */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 perspective-1000">
+        {zones.map((item, index) => (
+          <div 
+            key={index} 
+            className={`p-6 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-xl flex flex-col justify-between transform transition-all duration-500 hover:-translate-y-2 hover:rotate-x-2 hover:rotate-y-2 shadow-[0_4px_30px_rgba(0,0,0,0.5)] ${item.shadow}`}
+          >
             <div>
-              <span className="text-4xl mb-4 block">{item.icon}</span>
-              <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-              <p className="text-gray-400 mb-6 text-sm">{item.description}</p>
+              <div className="flex justify-between items-center mb-8">
+                <span className="text-4xl font-mono font-black text-white/5">{item.num}</span>
+                <span className="text-[8px] font-extrabold tracking-widest text-cyan-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md">{item.tagline}</span>
+              </div>
+              <h3 className="text-2xl font-black text-white mb-3 tracking-tight leading-none">{item.title}</h3>
+              <p className="text-slate-400 text-xs leading-relaxed mb-8">{item.description}</p>
             </div>
-            <div className="border-t border-white/10 pt-4 mt-auto">
-              {item.stats.map((stat, i) => (
-                <div key={i} className="flex justify-between items-center">
-                  <span className="text-gray-400 text-xs">{stat.label}</span>
-                  <span className="text-xl font-bold text-cyan-400">{stat.value}</span>
-                </div>
-              ))}
+            <div className="border-t border-white/10 pt-4 mt-auto flex flex-col gap-2">
+              <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">Zone Specifications</span>
+              <span className="text-center text-xs font-black text-white tracking-wide font-mono bg-white/5 px-2 py-1.5 rounded-md border border-white/5">{item.stat}</span>
             </div>
           </div>
         ))}
@@ -451,17 +150,63 @@ const AttractionsSection = () => {
   );
 };
 
+const ImageGallerySection = () => {
+  return (
+    <section id="gallery" className="py-28 bg-slate-900/10 border-t border-white/5 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16 text-center space-y-2">
+          <span className="text-xs font-bold text-indigo-400 tracking-widest uppercase block">Visual Feed</span>
+          <h3 className="text-3xl md:text-5xl font-black text-white">THE MEDIA FRAMEWORK</h3>
+        </div>
+        
+        {/* Sleek Glass Gallery Containers organized to showcase all 5 zones */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="h-48 rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-md flex flex-col items-center justify-center p-4 text-center group hover:border-cyan-500/30 transition-all duration-300">
+            <span className="text-2xl mb-2">🏃‍♂️</span>
+            <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase group-hover:text-cyan-400 transition-colors">[ Softplay Area ]</span>
+          </div>
+          <div className="h-48 rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-md flex flex-col items-center justify-center p-4 text-center group hover:border-purple-500/30 transition-all duration-300">
+            <span className="text-2xl mb-2">🕹️</span>
+            <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase group-hover:text-purple-400 transition-colors">[ Arcade Zone ]</span>
+          </div>
+          <div className="h-48 rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-md flex flex-col items-center justify-center p-4 text-center group hover:border-blue-500/30 transition-all duration-300">
+            <span className="text-2xl mb-2">🥽</span>
+            <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase group-hover:text-blue-400 transition-colors">[ VR Matrix ]</span>
+          </div>
+          <div className="h-48 rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-md flex flex-col items-center justify-center p-4 text-center group hover:border-amber-500/30 transition-all duration-300">
+            <span className="text-2xl mb-2">🎳</span>
+            <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase group-hover:text-amber-400 transition-colors">[ Bowling Alley ]</span>
+          </div>
+          <div className="h-48 rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-md flex flex-col items-center justify-center p-4 text-center group hover:border-red-500/30 transition-all duration-300 col-span-2 md:col-span-1">
+            <span className="text-2xl mb-2">🍔</span>
+            <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase group-hover:text-red-400 transition-colors">[ Cafeteria Lounge ]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Footer = () => {
+  return (
+    <footer className="w-full border-t border-white/5 bg-slate-950 py-12 text-center text-[10px] text-slate-600 font-bold uppercase tracking-widest">
+      <p>© {new Date().getFullYear()} FUNBOND Arena System. Co-Located at Goldie Cinemark. All Rights Reserved.</p>
+    </footer>
+  );
+};
+
 const FUNBOND = () => {
   return (
-    <div className="min-h-screen bg-slate-950 text-white selection:bg-cyan-500/30 selection:text-cyan-400">
+    <div className="min-h-screen bg-slate-950 text-white selection:bg-cyan-500/30 selection:text-cyan-400 overflow-x-hidden antialiased tracking-tight">
+      <Navigation />
       <main>
-        <AttractionsSection />
+        <HeroSection />
+        <ZonesSection />
+        <ImageGallerySection />
       </main>
+      <Footer />
     </div>
   );
 };
 
 export default FUNBOND;
-
-
-
