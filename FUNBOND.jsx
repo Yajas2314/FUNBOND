@@ -150,12 +150,11 @@ const ZonesSection = () => {
 
 const ImageGallerySection = () => {
   const liveGallery = [
-    { src: '/image1.jpg', title: 'Premium Pro-Boutique Lanes', subtitle: 'Bowling Arena', span: 'md:col-span-3 min-h-[400px]' },
-    { src: '/image2.jpg', title: 'Interactive Pitching Grid', subtitle: 'Arcade Zone', span: 'md:col-span-2 min-h-[400px]' },
-    { src: '/image3.jpg', title: 'Twin High-Motion Superbike Simulators', subtitle: 'Simulation Complex', span: 'md:col-span-2 min-h-[300px]' },
-    { src: '/image4.jpg', title: 'Ring Ducks Redemption Center', subtitle: 'Arcade Zone', span: 'md:col-span-3 min-h-[300px]' },
-    { src: '/image5.jpg', title: 'Joyful Ball Matrix Array', subtitle: 'Ticket Stations', span: 'md:col-span-2 min-h-[300px]' },
-    { src: '/image6.jpg', title: 'Amusement Express Locomotive', subtitle: 'Kids Zone', span: 'md:col-span-3 min-h-[300px]' }
+    { src: '/image1.jpg', span: 'md:col-span-3 min-h-[400px]' },
+    { src: '/image2.jpg', span: 'md:col-span-2 min-h-[400px]' },
+    { src: '/image3.jpg', span: 'md:col-span-2 min-h-[320px]' },
+    { src: '/image4.jpg', span: 'md:col-span-3 min-h-[320px]' },
+    { src: '/image5.jpg', span: 'md:col-span-5 min-h-[380px]' }
   ];
 
   return (
@@ -164,37 +163,22 @@ const ImageGallerySection = () => {
         <div className="mb-16 text-center space-y-3">
           <span className="text-xs font-extrabold text-cyan-400 tracking-widest uppercase block">Live Matrix Feed</span>
           <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">THE ARENA GALERIA</h3>
-          <p className="text-slate-400 text-xs max-w-xl mx-auto">Real-time snapshots mapping visual infrastructure inside our entertainment pavilion.</p>
+          <p className="text-slate-400 text-xs max-w-xl mx-auto">Visual architectural snapshots mapping inside our entertainment pavilion.</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 auto-rows-auto">
           {liveGallery.map((img, i) => (
             <div 
               key={i} 
-              className={`relative rounded-3xl border border-white/10 bg-slate-950 overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col justify-end transform transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 ${img.span}`}
+              className={`relative rounded-3xl border border-white/10 bg-slate-950 overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col justify-end transform transition-all duration-500 hover:scale-[1.01] hover:-translate-y-1 ${img.span}`}
             >
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{ backgroundImage: `url('${img.src}')` }}
               />
               
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-85 transition-opacity duration-300 group-hover:opacity-90" />
-              
-              <div className="relative z-10 m-5 p-5 rounded-2xl border border-white/10 bg-slate-950/40 backdrop-blur-xl shadow-2xl transform transition-all duration-300 group-hover:border-cyan-500/30">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <span className="text-[9px] font-mono font-black text-cyan-400 tracking-widest uppercase block mb-1">
-                      {img.subtitle}
-                    </span>
-                    <h4 className="text-sm font-black text-white tracking-tight">
-                      {img.title}
-                    </h4>
-                  </div>
-                  <span className="text-[10px] font-mono text-white/20 font-bold">
-                    [0{i + 1}]
-                  </span>
-                </div>
-              </div>
+              {/* Subtle glass glow border interaction on card hover */}
+              <div className="absolute inset-0 border border-transparent group-hover:border-cyan-500/20 rounded-3xl transition-all duration-300 pointer-events-none" />
             </div>
           ))}
         </div>
