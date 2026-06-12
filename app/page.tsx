@@ -1,6 +1,6 @@
 'use client';
 
-import FUNBOND from '@/components/FUNBOND';
+import FUNBOND from '@/FUNBOND';
 
 export default function Home() {
   return <FUNBOND />;
