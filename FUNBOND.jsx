@@ -40,7 +40,6 @@ const Navigation = () => {
 const HeroSection = () => {
   return (
     <div id="arena" className="relative isolate overflow-hidden min-h-[85vh] flex flex-col justify-center items-center text-center px-6">
-      {/* Dynamic 3D Perspective Grid Background */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:5rem_5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-25 animate-pulse" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-cyan-500/10 via-purple-500/5 to-transparent rounded-full blur-[140px] -z-10" />
 
@@ -124,7 +123,6 @@ const ZonesSection = () => {
         <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">THE FIVE EXPERIENTIAL ZONES</h2>
       </div>
 
-      {/* Expanded 5-Column Bento Grid with High-Fidelity Glassmorphism */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 perspective-1000">
         {zones.map((item, index) => (
           <div 
@@ -151,36 +149,54 @@ const ZonesSection = () => {
 };
 
 const ImageGallerySection = () => {
+  const liveGallery = [
+    { src: '/image1.jpg', title: 'Premium Pro-Boutique Lanes', subtitle: 'Bowling Arena', span: 'md:col-span-3 min-h-[400px]' },
+    { src: '/image2.jpg', title: 'Interactive Pitching Grid', subtitle: 'Arcade Zone', span: 'md:col-span-2 min-h-[400px]' },
+    { src: '/image3.jpg', title: 'Twin High-Motion Superbike Simulators', subtitle: 'Simulation Complex', span: 'md:col-span-2 min-h-[300px]' },
+    { src: '/image4.jpg', title: 'Ring Ducks Redemption Center', subtitle: 'Arcade Zone', span: 'md:col-span-3 min-h-[300px]' },
+    { src: '/image5.jpg', title: 'Joyful Ball Matrix Array', subtitle: 'Ticket Stations', span: 'md:col-span-2 min-h-[300px]' },
+    { src: '/image6.jpg', title: 'Amusement Express Locomotive', subtitle: 'Kids Zone', span: 'md:col-span-3 min-h-[300px]' }
+  ];
+
   return (
-    <section id="gallery" className="py-28 bg-slate-900/10 border-t border-white/5 px-6">
+    <section id="gallery" className="py-28 bg-slate-900/15 border-t border-white/5 px-6 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 text-center space-y-2">
-          <span className="text-xs font-bold text-indigo-400 tracking-widest uppercase block">Visual Feed</span>
-          <h3 className="text-3xl md:text-5xl font-black text-white">THE MEDIA FRAMEWORK</h3>
+        <div className="mb-16 text-center space-y-3">
+          <span className="text-xs font-extrabold text-cyan-400 tracking-widest uppercase block">Live Matrix Feed</span>
+          <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">THE ARENA GALERIA</h3>
+          <p className="text-slate-400 text-xs max-w-xl mx-auto">Real-time snapshots mapping visual infrastructure inside our entertainment pavilion.</p>
         </div>
         
-        {/* Sleek Glass Gallery Containers organized to showcase all 5 zones */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          <div className="h-48 rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-md flex flex-col items-center justify-center p-4 text-center group hover:border-cyan-500/30 transition-all duration-300">
-            <span className="text-2xl mb-2">🏃‍♂️</span>
-            <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase group-hover:text-cyan-400 transition-colors">[ Softplay Area ]</span>
-          </div>
-          <div className="h-48 rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-md flex flex-col items-center justify-center p-4 text-center group hover:border-purple-500/30 transition-all duration-300">
-            <span className="text-2xl mb-2">🕹️</span>
-            <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase group-hover:text-purple-400 transition-colors">[ Arcade Zone ]</span>
-          </div>
-          <div className="h-48 rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-md flex flex-col items-center justify-center p-4 text-center group hover:border-blue-500/30 transition-all duration-300">
-            <span className="text-2xl mb-2">🥽</span>
-            <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase group-hover:text-blue-400 transition-colors">[ VR Matrix ]</span>
-          </div>
-          <div className="h-48 rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-md flex flex-col items-center justify-center p-4 text-center group hover:border-amber-500/30 transition-all duration-300">
-            <span className="text-2xl mb-2">🎳</span>
-            <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase group-hover:text-amber-400 transition-colors">[ Bowling Alley ]</span>
-          </div>
-          <div className="h-48 rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-md flex flex-col items-center justify-center p-4 text-center group hover:border-red-500/30 transition-all duration-300 col-span-2 md:col-span-1">
-            <span className="text-2xl mb-2">🍔</span>
-            <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase group-hover:text-red-400 transition-colors">[ Cafeteria Lounge ]</span>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 auto-rows-auto">
+          {liveGallery.map((img, i) => (
+            <div 
+              key={i} 
+              className={`relative rounded-3xl border border-white/10 bg-slate-950 overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col justify-end transform transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 ${img.span}`}
+            >
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                style={{ backgroundImage: `url('${img.src}')` }}
+              />
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-85 transition-opacity duration-300 group-hover:opacity-90" />
+              
+              <div className="relative z-10 m-5 p-5 rounded-2xl border border-white/10 bg-slate-950/40 backdrop-blur-xl shadow-2xl transform transition-all duration-300 group-hover:border-cyan-500/30">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <span className="text-[9px] font-mono font-black text-cyan-400 tracking-widest uppercase block mb-1">
+                      {img.subtitle}
+                    </span>
+                    <h4 className="text-sm font-black text-white tracking-tight">
+                      {img.title}
+                    </h4>
+                  </div>
+                  <span className="text-[10px] font-mono text-white/20 font-bold">
+                    [0{i + 1}]
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
