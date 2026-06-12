@@ -3,9 +3,6 @@
   "devCommand": "next dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "env": {
-    "NEXT_PUBLIC_APP_URL": ""
-  },
   "rewrites": [
     {
       "source": "/:path*",
@@ -27,10 +24,6 @@
         {
           "key": "X-XSS-Protection",
           "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
         },
         {
           "key": "Cache-Control",
