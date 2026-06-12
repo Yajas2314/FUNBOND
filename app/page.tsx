@@ -1,7 +1,8 @@
 'use client';
 
-import FUNBOND from '@/FUNBOND';
+import React from 'react';
+import FUNBOND from '../FUNBOND';
 
-export default function Home() {
+export default function Page() {
   return <FUNBOND />;
 }
