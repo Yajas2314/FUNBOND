@@ -2,10 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    unoptimized: true, // Prevents image-optimization chunk conflicts
+    unoptimized: true,
   },
   webpack: (config, { isServer }) => {
-    // Force Webpack to completely disable splitting vendor chunks
+    // 1. Force Webpack to disable splitting vendor chunks entirely
     if (!isServer) {
       config.optimization.splitChunks = {
         cacheGroups: {
@@ -13,9 +13,13 @@ const nextConfig = {
           vendors: false,
         },
       };
+      
+      // 2. Force a single unique filename hash for every bundle piece
+      config.output.styleChunksFilename = 'static/chunks/[name].[contenthash:8].css';
+      config.output.chunkFilename = 'static/chunks/[name].[contenthash:8].js';
     }
     return config;
   },
-};
+}
 
 module.exports = nextConfig;
