@@ -1,5 +1,6 @@
 import React from 'react';
-import './global.css'; 
+// Using the absolute root alias (@/) to completely stop path errors
+import '@/app/global.css'; 
 
 export default function RootLayout({ children }: { children: any }) {
   return (
