@@ -1,11 +1,11 @@
 import React from 'react';
 
 // Relative imports from the exact same directory as this file
-import img1 from './Image1.jpg';
-import img2 from './Image2.jpg';
-import img3 from './Image3.jpg';
-import img4 from './Image4.png';
-import img5 from './Image5.png';
+import img1 from '../Image1.jpg';
+import img2 from '../Image2.jpg';
+import img3 from '../Image3.jpg';
+import img4 from '../Image4.png';
+import img5 from '../Image5.png';
 
 const Navigation = () => {
   return (
