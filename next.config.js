@@ -5,8 +5,8 @@ const nextConfig = {
     unoptimized: true,
   },
   webpack: (config, { isServer }) => {
-    // 1. Force Webpack to disable splitting vendor chunks entirely
     if (!isServer) {
+      // 1. Completely disable the default vendor split chunk behavior
       config.optimization.splitChunks = {
         cacheGroups: {
           default: false,
@@ -14,12 +14,11 @@ const nextConfig = {
         },
       };
       
-      // 2. Force a single unique filename hash for every bundle piece
-      config.output.styleChunksFilename = 'static/chunks/[name].[contenthash:8].css';
+      // 2. Safe Webpack 5 compliant unique naming for JS chunks
       config.output.chunkFilename = 'static/chunks/[name].[contenthash:8].js';
     }
     return config;
   },
-}
+};
 
 module.exports = nextConfig;
