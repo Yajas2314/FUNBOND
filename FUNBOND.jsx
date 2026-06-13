@@ -4,8 +4,8 @@ import React from 'react';
 import img1 from './Gallery/Image1.jpg';
 import img2 from './Gallery/Image2.jpg';
 import img3 from './Gallery/Image3.jpg';
-import img4 from './Gallery/Image4.png';
-import img5 from './Gallery/Image5.png';
+import img4 from './Gallery/Image4.PNG';
+import img5 from './Gallery/Image5.PNG';
 
 const Navigation = () => {
   return (
