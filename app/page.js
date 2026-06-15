@@ -114,7 +114,7 @@ export default function Page() {
           <div className="flex items-center space-x-5 group">
             <div className="relative h-20 w-20 rounded-xl p-[1.5px] overflow-hidden bg-gradient-to-br from-pink-500 via-purple-600 to-cyan-400 shadow-[0_0_25px_rgba(168,85,247,0.3)]">
               <img 
-                src="https://lh3.googleusercontent.com/d/1v7RYujAnGTS2PNQ4Ji2UzSRMydGIsOiQ" 
+                src="/logo.png" 
                 alt="FUNBOND BRAND LOGO" 
                 className="h-full w-full object-contain rounded-[10px] bg-[#07050d] p-1.5"
               />
