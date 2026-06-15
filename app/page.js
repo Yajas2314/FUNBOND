@@ -3,11 +3,11 @@
 import React from 'react';
 
 const images = [
-  { id: 1, src: 'image1.jpg', title: 'Experience Space 01' },
-  { id: 2, src: 'image2.jpg', title: 'Experience Space 02' },
-  { id: 3, src: 'image3.jpg', title: 'Experience Space 03' },
-  { id: 4, src: 'image4.png', title: 'Experience Space 04' },
-  { id: 5, src: 'image5.png', title: 'Experience Space 05' }
+  { id: 1, src: 'Image1.jpg', title: 'Experience Space 01' },
+  { id: 2, src: 'Image2.jpg', title: 'Experience Space 02' },
+  { id: 3, src: 'Image3.jpg', title: 'Experience Space 03' },
+  { id: 4, src: 'Image4.png', title: 'Experience Space 04' },
+  { id: 5, src: 'Image5.png', title: 'Experience Space 05' }
 ];
 
 export default function Page() {
