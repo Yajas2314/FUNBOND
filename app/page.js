@@ -40,7 +40,7 @@ export default function Page() {
           <div className="flex items-center space-x-4 group">
             <div className="relative h-12 w-12 rounded-xl p-[1.5px] overflow-hidden bg-gradient-to-br from-pink-500 via-purple-600 to-cyan-400 shadow-[0_0_20px_rgba(168,85,247,0.3)]">
               <img 
-                src="/logo.png" 
+                src="logo.png" 
                 alt="FUNBOND BRAND" 
                 className="h-full w-full object-contain rounded-[10px] bg-[#07050d] p-1"
                 onError={(e) => {
