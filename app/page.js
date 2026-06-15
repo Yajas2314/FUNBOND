@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 
 // ARENA SPACES MEDIA PACK
 const arenaSpaces = [
-  { id: '01', label: 'Boutique Bowling', src: 'https://lh3.googleusercontent.com/d/1v7RYujAnGTS2PNQ4Ji2UzSRMydGIsOiQ' },
-  { id: '02', label: 'VR Paragliding Rig', src: 'https://lh3.googleusercontent.com/d/1fPzHMiUjV5vThdcV7-szJkjEjLuzb6yx' },
-  { id: '03', label: 'Interactive Soft Play', src: 'https://lh3.googleusercontent.com/d/1_4ZT8A4upVjrfAqTs95u54YZkJn5HQol' },
-  { id: '04', label: 'Premium Arcade Rails', src: 'https://lh3.googleusercontent.com/d/1tHM-piNXPX0fsdopVAQMHlguVE4eDaUk' },
-  { id: '05', label: 'Racing Simulation Deck', src: 'http://googleusercontent.com/image_generation_content/1' }
+  { id: '01', src: 'https://lh3.googleusercontent.com/d/1v7RYujAnGTS2PNQ4Ji2UzSRMydGIsOiQ' },
+  { id: '02', src: 'https://lh3.googleusercontent.com/d/1fPzHMiUjV5vThdcV7-szJkjEjLuzb6yx' },
+  { id: '03', src: 'https://lh3.googleusercontent.com/d/1_4ZT8A4upVjrfAqTs95u54YZkJn5HQol' },
+  { id: '04', src: 'https://lh3.googleusercontent.com/d/1tHM-piNXPX0fsdopVAQMHlguVE4eDaUk' },
+  { id: '05', src: 'https://lh3.googleusercontent.com/d/12vYtYsNEa7MlzmJkmyWkpbkMo_Y5GQiu'}
 ];
 
 const achievements = [
