@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 
 const arenaSpaces = [
-  { id: '01', src: 'image1.jpg', title: 'Immersive Holo-Deck Space', desc: 'Step into a fully simulated environment featuring modern projection layouts, spatial audio arrays, and premium glassmorphic interactive architecture.', fallback: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop' },
-  { id: '02', src: 'image2.jpg', title: 'Neon Racing Simulators', desc: 'High-fidelity racing setups engineered with competitive telemetry, reactive haptic steering engines, and low-latency digital tracking loops.', fallback: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop' },
-  { id: '03', src: 'image3.jpg', title: 'Retro Gaming Matrix', desc: 'Where classic arcade layouts meet elite, premium design infrastructure for multiplayer battle configurations.', fallback: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop' },
-  { id: '04', src: 'image4.jpg', title: 'Tactical eSports Arena', desc: 'Tournament-ready operational hubs designed with direct device synchronization for intense performance monitoring.', fallback: 'https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=800&auto=format&fit=crop' },
-  { id: '05', src: 'image5.jpg', title: 'Quantum Kinetic Lounge', desc: 'Decompress inside a premium dark mode layout engineered for relaxation, spatial separation, and tactical adjustments.', fallback: 'https://images.unsplash.com/photo-1521898284481-a5ec348cb555?q=80&w=800&auto=format&fit=crop' }
+  { id: '01', src: 'Image1.jpg'},
+  { id: '02', src: 'Image2.jpg'},
+  { id: '03', src: 'Image3.jpg'},
+  { id: '04', src: 'Image4.png'},
+  { id: '05', src: 'Image5.png'}
 ];
 
 export default function Page() {
