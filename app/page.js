@@ -2,12 +2,13 @@
 
 import React, { useState } from 'react';
 
+// ARENA SPACES MEDIA PACK
 const arenaSpaces = [
-  { id: '01', label: 'Arcade 1', src: 'https://lh3.googleusercontent.com/d/1v7RYujAnGTS2PNQ4Ji2UzSRMydGIsOiQ' },
-  { id: '02', label: 'Arcade 2', src: 'https://lh3.googleusercontent.com/d/1fPzHMiUjV5vThdcV7-szJkjEjLuzb6yx' },
-  { id: '03', label: 'Arcade 3', src: 'https://lh3.googleusercontent.com/d/1_4ZT8A4upVjrfAqTs95u54YZkJn5HQol' },
-  { id: '04', label: 'Arcade 4', src: 'https://lh3.googleusercontent.com/d/1tHM-piNXPX0fsdopVAQMHlguVE4eDaUk' },
-  { id: '05', label: 'Arcade 5', src: 'http://googleusercontent.com/image_generation_content/1' }
+  { id: '01', label: 'Boutique Bowling', src: 'https://lh3.googleusercontent.com/d/1v7RYujAnGTS2PNQ4Ji2UzSRMydGIsOiQ' },
+  { id: '02', label: 'VR Paragliding Rig', src: 'https://lh3.googleusercontent.com/d/1fPzHMiUjV5vThdcV7-szJkjEjLuzb6yx' },
+  { id: '03', label: 'Interactive Soft Play', src: 'https://lh3.googleusercontent.com/d/1_4ZT8A4upVjrfAqTs95u54YZkJn5HQol' },
+  { id: '04', label: 'Premium Arcade Rails', src: 'https://lh3.googleusercontent.com/d/1tHM-piNXPX0fsdopVAQMHlguVE4eDaUk' },
+  { id: '05', label: 'Racing Simulation Deck', src: 'http://googleusercontent.com/image_generation_content/1' }
 ];
 
 const achievements = [
@@ -33,7 +34,7 @@ const specialBookings = [
   {
     title: "CORPORATE EVENTS",
     price: "Custom Pricing",
-    tagline: "High-octane team building sessions and premium corporate corporate hospitality.",
+    tagline: "High-octane team building sessions and premium corporate hospitality.",
     perks: [
       "Exclusive Venue Booking Options",
       "Custom Competitive Tournament Setup",
@@ -63,55 +64,29 @@ const loyaltyPlans = [
     name: "BRONZE",
     points: "0 - 999 Points",
     accent: "border-neutral-700/50 text-neutral-400",
-    glow: "rgba(115,115,115,0.05)",
-    features: [
-      "300 Game Tokens per Month",
-      "5% Off on All Venue Bookings",
-      "Special Birthday Surprise Token Pack",
-      "Monthly Newsletter & Insider Deals",
-      "Instant Access to Members App Portal"
-    ]
+    glow: "rgba(115,115,115,0.02)",
+    features: ["300 Game Tokens / mo", "5% Off Bookings", "Birthday Surprise Pack", "Monthly Deals Newsletter", "Access to Members App"]
   },
   {
     name: "SILVER",
     points: "1,000 - 4,999 Points",
-    accent: "border-slate-400/40 text-slate-300",
-    glow: "rgba(148,163,184,0.1)",
-    features: [
-      "800 Game Tokens per Month",
-      "10% Off on All Venue Bookings",
-      "Free Monthly Premium Game Credits",
-      "Priority Access for Party Bookings",
-      "Exclusive Event & Tourney Invites"
-    ]
+    accent: "border-slate-500/30 text-slate-300",
+    glow: "rgba(148,163,184,0.05)",
+    features: ["800 Game Tokens / mo", "10% Off Bookings", "Free Monthly Credits", "Priority Party Window", "Exclusive Event Invites"]
   },
   {
     name: "GOLD",
     points: "5,000 - 14,999 Points",
-    accent: "border-yellow-500/40 text-yellow-400",
-    glow: "rgba(234,179,8,0.1)",
-    features: [
-      "2,000 Game Tokens per Month",
-      "20% Off on All Venue Bookings",
-      "Free VR Sessions Monthly",
-      "Elite VIP Skip-The-Queue Access",
-      "Exclusive Gold Tournaments Entry",
-      "Permanent Double Reward Points Multiplier"
-    ]
+    accent: "border-yellow-500/30 text-yellow-400",
+    glow: "rgba(234,179,8,0.06)",
+    features: ["2,000 Game Tokens / mo", "20% Off Bookings", "Free VR Sessions Monthly", "VIP Skip-The-Queue", "Gold Tournaments Entry", "Double Reward Points"]
   },
   {
     name: "PLATINUM",
     points: "15,000+ Points",
-    accent: "border-cyan-400/50 text-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.15)]",
-    glow: "rgba(34,211,238,0.15)",
-    features: [
-      "Unlimited Tokens Allocation",
-      "30% Off Everything, Always",
-      "Permanent Elite Skip-The-Queue Privileges",
-      "Invite-Only Platinum Exclusive Events",
-      "Personal Gaming Concierge Support",
-      "Premium Funbond Anniversary Gift Pack"
-    ]
+    accent: "border-cyan-400/40 text-cyan-400",
+    glow: "rgba(34,211,238,0.1)",
+    features: ["Unlimited Tokens Pool", "30% Off Everything Always", "Permanent Queue Skip", "Invite-Only Galas", "Personal Gaming Concierge", "Anniversary Gift Pack"]
   }
 ];
 
@@ -126,10 +101,10 @@ export default function Page() {
         <img 
           src="http://googleusercontent.com/image_generation_content/1" 
           alt="Funbond Premium Cinematic Backdrop" 
-          className="w-full h-full object-cover filter brightness-[0.35] saturate-[1.1] contrast-[1.05]"
+          className="w-full h-full object-cover filter brightness-[0.25] saturate-[1.1] contrast-[1.05]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030206]/80 via-[#030206]/50 to-[#030206]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_10%,#030206_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030206]/90 via-[#030206]/60 to-[#030206]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#030206_100%)]" />
       </div>
 
       {/* TOP PROFESSIONAL NAVIGATION BAR */}
@@ -137,10 +112,9 @@ export default function Page() {
         <div className="max-w-7xl mx-auto px-6 h-28 flex items-center justify-between">
           
           <div className="flex items-center space-x-5 group">
-            {/* Enlarged logo box container mapped to your secure storage asset */}
-            <div className="relative h-20 w-20 rounded-xl p-[1.5px] overflow-hidden bg-gradient-to-br from-pink-500 via-purple-600 to-cyan-400 shadow-[0_0_25px_rgba(168,85,247,0.4)]">
+            <div className="relative h-20 w-20 rounded-xl p-[1.5px] overflow-hidden bg-gradient-to-br from-pink-500 via-purple-600 to-cyan-400 shadow-[0_0_25px_rgba(168,85,247,0.3)]">
               <img 
-                src="\logo.png" 
+                src="https://lh3.googleusercontent.com/d/1v7RYujAnGTS2PNQ4Ji2UzSRMydGIsOiQ" 
                 alt="FUNBOND BRAND LOGO" 
                 className="h-full w-full object-contain rounded-[10px] bg-[#07050d] p-1.5"
               />
@@ -155,10 +129,12 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center space-x-8 text-xs font-black tracking-widest text-neutral-400 uppercase">
+          <div className="hidden lg:flex items-center space-x-6 text-xs font-black tracking-widest text-neutral-400 uppercase">
             <a href="#gallery" className="hover:text-white transition-colors">GALLERY</a>
-            <a href="#bookings" className="hover:text-white transition-colors">SPECIAL BOOKINGS</a>
+            <a href="#bookings" className="hover:text-white transition-colors">BOOKINGS</a>
             <a href="#membership" className="hover:text-white transition-colors">MEMBERSHIP</a>
+            <a href="#milestones" className="hover:text-white transition-colors">METRICS</a>
+            <a href="#expansion" className="hover:text-white transition-colors">EXPANSION</a>
             <a href="#booking" className="hover:text-pink-400 transition-colors">RESERVATIONS</a>
           </div>
 
@@ -253,7 +229,7 @@ export default function Page() {
           </div>
         </section>
 
-        {/* SECTION I: SPECIAL EVENT BOOKINGS */}
+        {/* SPECIAL EVENT BOOKINGS */}
         <section id="bookings" className="max-w-7xl mx-auto px-6 py-20 scroll-mt-24">
           <div className="border-b border-white/5 pb-6 mb-12">
             <h2 className="text-xs font-black tracking-[0.4em] text-pink-500 uppercase mb-2">// EXCLUSIVE PACKAGES</h2>
@@ -293,7 +269,7 @@ export default function Page() {
           </div>
         </section>
 
-        {/* SECTION II: MEMBERSHIP ROYALTY TIERS */}
+        {/* MEMBERSHIP ROYALTY TIERS */}
         <section id="membership" className="max-w-7xl mx-auto px-6 py-20 scroll-mt-24">
           <div className="border-b border-white/5 pb-6 mb-12">
             <h2 className="text-xs font-black tracking-[0.4em] text-cyan-400 uppercase mb-2">// LOYALTY PIPELINE</h2>
@@ -324,6 +300,110 @@ export default function Page() {
                 </ul>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* NEW SECTION III: MILESTONES & RATING SYSTEM */}
+        <section id="milestones" className="max-w-7xl mx-auto px-6 py-20 scroll-mt-24">
+          <div className="p-1.5 rounded-[36px] bg-gradient-to-br from-white/10 via-transparent to-purple-500/10 border border-white/5 backdrop-blur-3xl">
+            <div className="bg-[#05040a]/90 rounded-[32px] px-8 py-16 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              
+              <div className="lg:col-span-5 space-y-6">
+                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[10px] font-black tracking-widest uppercase">
+                  <span>⚡ MASSIVE PLAYER BASE</span>
+                </div>
+                <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none text-white">
+                  1 MILLION+ PLAYERS <br />
+                  <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                    CANNOT BE WRONG.
+                  </span>
+                </h3>
+                <p className="text-neutral-400 text-xs font-light leading-relaxed">
+                  Real stories from real players across the country. Witness the structural shifting of competitive leisure, simulated athletics, and high-tier hospitality frameworks.
+                </p>
+                <div className="pt-2">
+                  <button className="h-11 px-6 rounded-xl border border-white/10 bg-white/[0.02] text-xs font-bold tracking-wider uppercase hover:bg-white/5 transition-colors">
+                    READ PLAYER ENCOUNTERS →
+                  </button>
+                </div>
+              </div>
+
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-cyan-400/20 transition-all">
+                  <div className="text-5xl font-black text-cyan-400 tracking-tight mb-2">4.9</div>
+                  <div className="text-xs font-black uppercase tracking-widest text-neutral-300 mb-1">AVERAGE USER RATING</div>
+                  <p className="text-[11px] text-neutral-500 font-light">Calculated over verified digital arcade visits and checkout telemetry logs.</p>
+                </div>
+
+                <div className="p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-pink-500/20 transition-all">
+                  <div className="text-5xl font-black text-pink-500 tracking-tight mb-2">98%</div>
+                  <div className="text-xs font-black uppercase tracking-widest text-neutral-300 mb-1">WOULD RECOMMEND</div>
+                  <p className="text-[11px] text-neutral-500 font-light">Sourced via decentralized exit surveys and institutional event evaluations.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* NEW SECTION IV: NATIONAL EXPANSION FOOTPRINT & HOURS */}
+        <section id="expansion" className="max-w-7xl mx-auto px-6 py-20 scroll-mt-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            {/* National Footprint Card */}
+            <div className="lg:col-span-7 p-8 md:p-12 rounded-[32px] bg-white/[0.01] border border-white/5 flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 filter blur-3xl rounded-full" />
+              <div>
+                <h4 className="text-xs font-black tracking-[0.4em] text-cyan-400 uppercase mb-2">// GEOGRAPHIC SCALING</h4>
+                <h3 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase mb-6 leading-none">
+                  INDIA'S 8 MAJOR CITIES <br />
+                  <span className="text-neutral-500 font-light text-2xl md:text-3xl block mt-2">
+                    1M+ Active Competitors & Counting
+                  </span>
+                </h3>
+                <p className="text-neutral-400 text-xs font-light max-w-xl leading-relaxed">
+                  Apart from our landmark arena in Chhatrapati Sambhaji Nagar, Funbond is deploying hyper-premium multi-tiered social entertainment nodes across India's primary urban sectors.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-6 border-t border-white/5 text-[10px] font-mono tracking-widest text-neutral-400">
+                <div>[01] MUMBAI</div>
+                <div>[02] BENGALURU</div>
+                <div>[03] DELHI NCR</div>
+                <div>[04] PUNE</div>
+                <div>[05] HYDERABAD</div>
+                <div>[06] CHENNAI</div>
+                <div>[07] AHMEDABAD</div>
+                <div>[08] INDORE</div>
+              </div>
+            </div>
+
+            {/* Timings Interface Card */}
+            <div className="lg:col-span-5 p-8 md:p-12 rounded-[32px] bg-gradient-to-br from-purple-900/20 via-transparent to-transparent border border-purple-500/20 flex flex-col justify-between">
+              <div>
+                <div className="inline-flex items-center space-x-1.5 text-pink-400 text-[10px] font-black tracking-widest uppercase mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>7 DAYS OPEN CHRONO MATRIX</span>
+                </div>
+                <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-8">TIMINGS STATUS</h3>
+                
+                <div className="space-y-6">
+                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-neutral-400 mb-1">MONDAY — THURSDAY</p>
+                    <p className="text-xl font-mono font-bold text-white">11:00 AM — 11:00 PM</p>
+                  </div>
+                  <div className="p-4 rounded-xl bg-purple-500/[0.05] border border-purple-500/20">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-pink-400 mb-1">FRIDAY — SUNDAY & HOLIDAYS</p>
+                    <p className="text-xl font-mono font-bold text-white">11:00 AM — 12:00 AM <span className="text-xs text-neutral-400 font-sans block sm:inline sm:ml-2">(MIDNIGHT SHIFT)</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-[10px] text-neutral-500 mt-8 font-light">
+                *Operational hours are subject to regional holiday shifts and exclusive full-venue private corporate takeovers.
+              </p>
+            </div>
+
           </div>
         </section>
 
@@ -360,46 +440,93 @@ export default function Page() {
         </section>
       </main>
 
-      {/* FOOTER TERMINAL CONTAINER */}
-      <footer className="w-full border-t border-white/5 bg-[#030206]/90 backdrop-blur-md py-20 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 text-sm text-neutral-400">
+      {/* MASTER PROFESSIONAL DIRECTORY FOOTER */}
+      <footer className="w-full border-t border-white/5 bg-[#030206]/95 backdrop-blur-md pt-20 pb-12 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 text-sm text-neutral-400">
           
-          <div className="lg:col-span-6 space-y-4">
-            <div className="flex items-center space-x-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-pink-500 shadow-[0_0_10px_#ec4899]" />
-              <h4 className="text-white font-black tracking-widest uppercase text-xs">ARENA ADDRESS COORDINATES</h4>
+          {/* Brand & Address Column */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="flex items-center space-x-3">
+              <span className="w-2 h-2 rounded-full bg-pink-500 shadow-[0_0_10px_#ec4899]" />
+              <h4 className="text-white font-black tracking-widest uppercase text-xs">FUNBOND INT. OPERATIONS</h4>
             </div>
-            <p className="leading-relaxed text-neutral-300 font-light text-base">
+            <p className="leading-relaxed text-neutral-300 font-light text-sm">
               <span className="text-white font-black text-lg block mb-1">FUNBOND ARENA</span>
               Ground Floor, Goldie Cinemark,<br />
               Near Railway Station,<br />
               Chh. Sambhaji Nagar
             </p>
+            <div className="pt-2">
+              <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-[10px] font-bold tracking-widest uppercase hover:bg-white/10 transition-colors">
+                MAP LINK MAP TRANSMISSION ↗
+              </a>
+            </div>
           </div>
           
-          <div className="lg:col-span-3 space-y-4">
-            <div>
-              <p className="text-[10px] font-black tracking-widest text-neutral-500 uppercase mb-1">CHRONO WINDOW</p>
-              <p className="text-neutral-200 text-xs font-bold">Open Daily Mon - Sun</p>
-              <p className="text-cyan-400 font-mono text-xs font-bold">11:00 AM - 10:00 PM</p>
-            </div>
-            <div>
-              <p className="text-[10px] font-black tracking-widest text-neutral-500 uppercase mb-1">COMMS PORTAL</p>
-              <p className="text-neutral-200 font-mono text-xs font-bold">+91 98345 94372</p>
-            </div>
+          {/* Navigation Matrix 1: Amusement Segments */}
+          <div className="lg:col-span-2 space-y-3">
+            <p className="text-[10px] font-black tracking-widest text-neutral-200 uppercase mb-1">CORE GAMES</p>
+            <ul className="space-y-2 text-xs font-light">
+              <li><a href="#gallery" className="hover:text-white transition-colors">Boutique Bowling</a></li>
+              <li><a href="#gallery" className="hover:text-white transition-colors">Racing Simulation Deck</a></li>
+              <li><a href="#gallery" className="hover:text-white transition-colors">VR Paragliding Simulation</a></li>
+              <li><a href="#gallery" className="hover:text-white transition-colors">Trampoline Arena Deck</a></li>
+            </ul>
           </div>
 
-          <div className="lg:col-span-3 lg:text-right flex flex-col lg:items-end justify-center">
-            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="w-full lg:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-cyan-500/5 border border-cyan-500/20 text-cyan-400 font-black hover:bg-cyan-500/10 transition-all text-xs tracking-wider uppercase">
-              MAP TRANSMISSION ↗
-            </a>
+          {/* Navigation Matrix 2: Gatherings */}
+          <div className="lg:col-span-2 space-y-3">
+            <p className="text-[10px] font-black tracking-widest text-neutral-200 uppercase mb-1">CELEBRATIONS</p>
+            <ul className="space-y-2 text-xs font-light">
+              <li><a href="#bookings" className="hover:text-white transition-colors">Birthday Party Bash</a></li>
+              <li><a href="#bookings" className="hover:text-white transition-colors">Corporate Events Panel</a></li>
+              <li><a href="#bookings" className="hover:text-white transition-colors">Institutional School Trips</a></li>
+              <li><a href="#booking" className="hover:text-white transition-colors">Group Cooking & Bond</a></li>
+            </ul>
+          </div>
+
+          {/* Navigation Matrix 3: Corporate Info */}
+          <div className="lg:col-span-2 space-y-3">
+            <p className="text-[10px] font-black tracking-widest text-neutral-200 uppercase mb-1">ENTERPRISE</p>
+            <ul className="space-y-2 text-xs font-light">
+              <li><a href="#expansion" className="hover:text-white transition-colors">Careers Ecosystem</a></li>
+              <li><a href="#membership" className="hover:text-white transition-colors">Media & Press Kit</a></li>
+              <li><a href="#milestones" className="hover:text-white transition-colors">CSR Initiatives Group</a></li>
+              <li><a href="#expansion" className="hover:text-white transition-colors">Safety Policy Protocol</a></li>
+            </ul>
+          </div>
+
+          {/* Navigation Matrix 4: Comms & Social Broadcasts */}
+          <div className="lg:col-span-2 space-y-4">
+            <div>
+              <p className="text-[10px] font-black tracking-widest text-neutral-200 uppercase mb-1">SOCIAL CHANNELS</p>
+              <div className="flex flex-col space-y-2 text-xs font-light">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-pink-400 hover:text-pink-300 transition-colors">📸 INSTAGRAM FEED</a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 transition-colors">📺 YOUTUBE BROADCAST</a>
+              </div>
+            </div>
+            <div>
+              <p className="text-[10px] font-black tracking-widest text-neutral-200 uppercase mb-1">DIRECT HELP</p>
+              <ul className="space-y-1.5 text-xs font-light">
+                <li><a href="tel:+919834594372" className="hover:text-white transition-colors">Support Portal</a></li>
+                <li><a href="mailto:support@funbond.com" className="hover:text-white transition-colors">User Feedback Desk</a></li>
+              </ul>
+            </div>
           </div>
 
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 pt-12 mt-16 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-neutral-600 tracking-widest">
-          <div>© 2026 FUNBOND CORPORATION INT. ALL RIGHTS RESERVED.</div>
-          <div className="font-mono text-neutral-700 text-[9px]">BUILD // PRODUCTION_V6.2</div>
+        {/* LOWER COMPLIANCE & ACCREDITATION BANNER */}
+        <div className="max-w-7xl mx-auto px-6 pt-12 mt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] text-neutral-600 tracking-widest">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center md:justify-start">
+            <a href="#expansion" className="hover:text-neutral-400 transition-colors uppercase">TERMS OF USE</a>
+            <a href="#expansion" className="hover:text-neutral-400 transition-colors uppercase">PRIVACY POLICY</a>
+            <a href="#expansion" className="hover:text-neutral-400 transition-colors uppercase">COMPLIANCE STATEMENTS</a>
+          </div>
+          <div className="text-center md:text-right space-y-1">
+            <div>© 2026 FUNBOND CORPORATION INT. ALL RIGHTS RESERVED.</div>
+            <div className="font-mono text-neutral-700 text-[9px]">ENGINE COMPILATION // PRODUCTION_V7.5</div>
+          </div>
         </div>
       </footer>
 
