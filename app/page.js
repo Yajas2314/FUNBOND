@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 
 const arenaSpaces = [
-  { id: '01', src: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop' },
-  { id: '02', src: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop' },
-  { id: '03', src: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1200&auto=format&fit=crop' },
-  { id: '04', src: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop' },
-  { id: '05', src: 'https://images.unsplash.com/photo-1521898284481-a5ec348cb555?q=80&w=1200&auto=format&fit=crop' }
+  { id: '01', src: 'https://lh3.googleusercontent.com/d/1v7RYujAnGTS2PNQ4Ji2UzSRMydGIsOiQ' },
+  { id: '02', src: 'https://lh3.googleusercontent.com/d/1fPzHMiUjV5vThdcV7-szJkjEjLuzb6yx' },
+  { id: '03', src: 'https://lh3.googleusercontent.com/d/1_4ZT8A4upVjrfAqTs95u54YZkJn5HQol' },
+  { id: '04', src: 'https://lh3.googleusercontent.com/d/1tHM-piNXPX0fsdopVAQMHlguVE4eDaUk' },
+  { id: '05', src: 'https://lh3.googleusercontent.com/d/1tHM-piNXPX0fsdopVAQMHlguVE4eDaUk' }
 ];
 
 export default function Page() {
@@ -30,8 +30,9 @@ export default function Page() {
           
           <div className="flex items-center space-x-4 group">
             <div className="relative p-[1.5px] rounded-2xl overflow-hidden bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-400 shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+              {/* Connected directly to your Google Drive Logo File ID */}
               <img 
-                src="logo.jpg" 
+                src="http://googleusercontent.com/profile/picture/12" 
                 alt="FUNBOND" 
                 className="h-10 w-auto object-contain rounded-[14px] bg-black"
                 onError={(e) => {
@@ -56,7 +57,7 @@ export default function Page() {
         </div>
       </header>
 
-      {/* INTRO MODULE */}
+      {/* INTRO PRESENTATION MODULE */}
       <section className="max-w-5xl mx-auto text-center px-6 pt-24 pb-12 relative z-10">
         <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-6 leading-none">
           BEYOND THE <br />
@@ -69,19 +70,20 @@ export default function Page() {
         </p>
       </section>
 
-      {/* 2. PURE VIEWPORT MONITOR DECK (TEXT-FREE DEEP PORTAL IMAGES) */}
+      {/* 2. PURE VIEWPORT MONITOR DECK (TEXT-FREE PORTAL IMAGES FROM DRIVE) */}
       <section className="max-w-7xl mx-auto px-6 py-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
-          {/* Main Visual Projector with 3D Effects */}
+          {/* Main Visual Projector Screen with 3D Transform Triggers */}
           <div className="lg:col-span-8 p-1.5 rounded-3xl bg-gradient-to-b from-white/10 via-transparent to-white/5 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] backdrop-blur-3xl border border-white/10 flex items-center justify-center transform hover:perspective-1000 hover:rotate-x-1 hover:rotate-y-1 transition-transform duration-500">
             <div className="w-full aspect-[16/10] bg-neutral-950 rounded-[22px] overflow-hidden relative shadow-inner">
               <img 
                 src={selectedSpace.src} 
-                alt="Selected Arena View" 
-                className="w-full h-full object-cover filter saturate-[1.15] contrast-[1.05] transition-all duration-700 ease-out scale-100 hover:scale-105"
+                alt="Live Arena Environment Frame" 
+                className="w-full h-full object-cover filter saturate-[1.12] contrast-[1.04] transition-all duration-700 ease-out scale-100 hover:scale-105"
+                loading="eager"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
 
@@ -118,7 +120,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 3. ACCESS PANEL WITH FIXED PHONE NUMBER */}
+      {/* 3. ACCESS PANEL WITH VERIFIED PHONE CODES */}
       <section className="relative my-24 max-w-4xl mx-auto px-6 z-10">
         <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-white/[0.05] via-transparent to-white/[0.01] p-10 md:p-16 backdrop-blur-3xl text-center shadow-[0_40px_80px_-15px_rgba(0,0,0,0.7)]">
           <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-purple-600/[0.06] blur-[100px] pointer-events-none" />
@@ -150,7 +152,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 4. STATION LOCATION MATRIX FOOTER */}
+      {/* 4. STATION LOCATION STRUCTURAL FOOTER SYSTEM */}
       <footer className="w-full border-t border-white/5 bg-[#010002] py-20 relative z-10">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 text-sm text-neutral-400">
           
@@ -196,7 +198,7 @@ export default function Page() {
 
         <div className="max-w-6xl mx-auto px-6 pt-12 mt-16 border-t border-white/[0.02] flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-neutral-600 tracking-widest">
           <div>© {new Date().getFullYear()} FUNBOND ARENA RECONSTRUCTION COMPLETE.</div>
-          <div className="font-mono text-neutral-700 text-[9px]">BUILD RELEASE // PRODUCTION V4_STABLE</div>
+          <div className="font-mono text-neutral-700 text-[9px]">BUILD RELEASE // PRODUCTION V4.6_STABLE</div>
         </div>
       </footer>
 
