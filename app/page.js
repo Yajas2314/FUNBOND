@@ -7,13 +7,112 @@ const arenaSpaces = [
   { id: '02', label: 'Arcade 2', src: 'https://lh3.googleusercontent.com/d/1fPzHMiUjV5vThdcV7-szJkjEjLuzb6yx' },
   { id: '03', label: 'Arcade 3', src: 'https://lh3.googleusercontent.com/d/1_4ZT8A4upVjrfAqTs95u54YZkJn5HQol' },
   { id: '04', label: 'Arcade 4', src: 'https://lh3.googleusercontent.com/d/1tHM-piNXPX0fsdopVAQMHlguVE4eDaUk' },
-  { id: '05', label: 'Arcade 5', src:'https://lh3.googleusercontent.com/d/12vYtYsNEa7MlzmJkmyWkpbkMo_Y5GQiu'}
+  { id: '05', label: 'Arcade 5', src: 'http://googleusercontent.com/image_generation_content/1' }
 ];
 
 const achievements = [
   { metric: '4 LANES', title: 'PREMIUM BOWLING', desc: 'Bespoke, highly polished architectural bowling lanes equipped with synchronized neon light tracking.' },
   { metric: 'VR GLIDE', title: 'VR PARAGLIDING SIMULATOR', desc: 'Next-generation motion tracking and immersive virtual paragliding rigs for ultimate adrenaline.' },
   { metric: 'SOFT GAMES', title: 'PREMIUM AMUSEMENT', desc: 'Dedicated luxury soft play setups and interactive physical leisure attractions for groups and families.' }
+];
+
+const specialBookings = [
+  {
+    title: "BIRTHDAY BASH",
+    price: "From ₹2,999",
+    tagline: "Celebrate milestones with a legendary tailored gaming experience.",
+    perks: [
+      "Private Party Room",
+      "Unlimited Tokens for 2 Hours",
+      "Custom Cake & Elaborate Theme Decorations",
+      "Dedicated On-Site Party Host",
+      "Group Photos & Memorabilia Pack"
+    ],
+    accent: "from-pink-500 via-purple-500 to-indigo-500"
+  },
+  {
+    title: "CORPORATE EVENTS",
+    price: "Custom Pricing",
+    tagline: "High-octane team building sessions and premium corporate corporate hospitality.",
+    perks: [
+      "Exclusive Venue Booking Options",
+      "Custom Competitive Tournament Setup",
+      "Gourmet Catering Options",
+      "Fully Branded Dynamic Experience Panels",
+      "Dedicated Corporate Event Coordinator"
+    ],
+    accent: "from-cyan-500 via-blue-600 to-indigo-600"
+  },
+  {
+    title: "SCHOOL TRIPS",
+    price: "From ₹499 / Student",
+    tagline: "Educational mechanics mixed with safe, active high-energy play.",
+    perks: [
+      "Fully Supervised Group Activities",
+      "Age-Appropriate Structural Games",
+      "Generous Tiered Group Discounts",
+      "Comprehensive Safety Briefing",
+      "Dedicated Teacher Coordination Desk"
+    ],
+    accent: "from-amber-400 via-orange-500 to-pink-500"
+  }
+];
+
+const loyaltyPlans = [
+  {
+    name: "BRONZE",
+    points: "0 - 999 Points",
+    accent: "border-neutral-700/50 text-neutral-400",
+    glow: "rgba(115,115,115,0.05)",
+    features: [
+      "300 Game Tokens per Month",
+      "5% Off on All Venue Bookings",
+      "Special Birthday Surprise Token Pack",
+      "Monthly Newsletter & Insider Deals",
+      "Instant Access to Members App Portal"
+    ]
+  },
+  {
+    name: "SILVER",
+    points: "1,000 - 4,999 Points",
+    accent: "border-slate-400/40 text-slate-300",
+    glow: "rgba(148,163,184,0.1)",
+    features: [
+      "800 Game Tokens per Month",
+      "10% Off on All Venue Bookings",
+      "Free Monthly Premium Game Credits",
+      "Priority Access for Party Bookings",
+      "Exclusive Event & Tourney Invites"
+    ]
+  },
+  {
+    name: "GOLD",
+    points: "5,000 - 14,999 Points",
+    accent: "border-yellow-500/40 text-yellow-400",
+    glow: "rgba(234,179,8,0.1)",
+    features: [
+      "2,000 Game Tokens per Month",
+      "20% Off on All Venue Bookings",
+      "Free VR Sessions Monthly",
+      "Elite VIP Skip-The-Queue Access",
+      "Exclusive Gold Tournaments Entry",
+      "Permanent Double Reward Points Multiplier"
+    ]
+  },
+  {
+    name: "PLATINUM",
+    points: "15,000+ Points",
+    accent: "border-cyan-400/50 text-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.15)]",
+    glow: "rgba(34,211,238,0.15)",
+    features: [
+      "Unlimited Tokens Allocation",
+      "30% Off Everything, Always",
+      "Permanent Elite Skip-The-Queue Privileges",
+      "Invite-Only Platinum Exclusive Events",
+      "Personal Gaming Concierge Support",
+      "Premium Funbond Anniversary Gift Pack"
+    ]
+  }
 ];
 
 export default function Page() {
@@ -35,36 +134,31 @@ export default function Page() {
 
       {/* TOP PROFESSIONAL NAVIGATION BAR */}
       <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#030206]/80 backdrop-blur-2xl">
-        <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-28 flex items-center justify-between">
           
-          <div className="flex items-center space-x-4 group">
-            <div className="relative h-20 w-20 rounded-xl p-[1.5px] overflow-hidden bg-gradient-to-br from-pink-500 via-purple-600 to-cyan-400 shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+          <div className="flex items-center space-x-5 group">
+            {/* Enlarged logo box container mapped to your secure storage asset */}
+            <div className="relative h-20 w-20 rounded-xl p-[1.5px] overflow-hidden bg-gradient-to-br from-pink-500 via-purple-600 to-cyan-400 shadow-[0_0_25px_rgba(168,85,247,0.4)]">
               <img 
                 src="\logo.png" 
-                alt="FUNBOND BRAND" 
-                className="h-full w-full object-contain rounded-[10px] bg-[#07050d] p-1"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
+                alt="FUNBOND BRAND LOGO" 
+                className="h-full w-full object-contain rounded-[10px] bg-[#07050d] p-1.5"
               />
-              <div className="hidden h-full w-full items-center justify-center bg-[#07050d] rounded-[10px] text-xs font-black text-cyan-400">
-                FB
-              </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-black tracking-[0.2em] bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+              <span className="text-2xl font-black tracking-[0.2em] bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                 FUNBOND
               </span>
-              <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-cyan-400/90">
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-cyan-400/90">
                 EXPERIENCE ARENA
               </span>
             </div>
           </div>
 
-          <div className="hidden sm:flex items-center space-x-8 text-xs font-black tracking-widest text-neutral-400 uppercase">
+          <div className="hidden lg:flex items-center space-x-8 text-xs font-black tracking-widest text-neutral-400 uppercase">
             <a href="#gallery" className="hover:text-white transition-colors">GALLERY</a>
-            <a href="#stats" className="hover:text-white transition-colors">SPECIFICATIONS</a>
+            <a href="#bookings" className="hover:text-white transition-colors">SPECIAL BOOKINGS</a>
+            <a href="#membership" className="hover:text-white transition-colors">MEMBERSHIP</a>
             <a href="#booking" className="hover:text-pink-400 transition-colors">RESERVATIONS</a>
           </div>
 
@@ -90,7 +184,7 @@ export default function Page() {
           </div>
         </section>
 
-        {/* INTERACTIVE CARDS WITH UP-TO-DATE ATTRACTIONS */}
+        {/* INTERACTIVE CARDS WITH ATTRACTIONS */}
         <section id="stats" className="max-w-7xl mx-auto px-6 py-12 scroll-mt-24">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {achievements.map((item, idx) => (
@@ -109,7 +203,7 @@ export default function Page() {
           </div>
         </section>
 
-        {/* GALLERY MODULE (CLEAN TITLES ONLY) */}
+        {/* GALLERY MODULE */}
         <section id="gallery" className="max-w-7xl mx-auto px-6 py-20 scroll-mt-24">
           <div className="border-b border-white/5 pb-6 mb-12">
             <h2 className="text-xs font-black tracking-[0.4em] text-cyan-400 uppercase mb-2">// AMUSEMENT SEGMENTS</h2>
@@ -117,7 +211,6 @@ export default function Page() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            {/* Visual Screen Projection Block */}
             <div className="lg:col-span-8 p-1.5 rounded-[28px] bg-gradient-to-b from-white/10 to-transparent border border-white/10 backdrop-blur-3xl shadow-2xl">
               <div className="w-full aspect-[16/10] bg-[#07050d] rounded-[22px] overflow-hidden relative">
                 <img 
@@ -133,7 +226,6 @@ export default function Page() {
               </div>
             </div>
 
-            {/* Selector Sidebar Rails */}
             <div className="lg:col-span-4 flex flex-col gap-3 justify-center">
               {arenaSpaces.map((space) => {
                 const isCurrent = selectedSpace.id === space.id;
@@ -161,6 +253,80 @@ export default function Page() {
           </div>
         </section>
 
+        {/* SECTION I: SPECIAL EVENT BOOKINGS */}
+        <section id="bookings" className="max-w-7xl mx-auto px-6 py-20 scroll-mt-24">
+          <div className="border-b border-white/5 pb-6 mb-12">
+            <h2 className="text-xs font-black tracking-[0.4em] text-pink-500 uppercase mb-2">// EXCLUSIVE PACKAGES</h2>
+            <p className="text-3xl font-black tracking-tight text-white uppercase">SPECIAL BOOKINGS</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {specialBookings.map((pkg, idx) => (
+              <div key={idx} className="flex flex-col rounded-[32px] bg-white/[0.01] border border-white/5 p-8 relative overflow-hidden group hover:border-white/10 transition-all duration-300 shadow-xl">
+                <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${pkg.accent} opacity-10 filter blur-xl group-hover:opacity-20 transition-opacity`} />
+                
+                <div className="mb-6">
+                  <h3 className="text-2xl font-black tracking-tight text-white uppercase mb-1">{pkg.title}</h3>
+                  <div className="inline-block px-3 py-1 rounded-md bg-white/5 text-cyan-400 font-mono text-xs font-bold tracking-wider">
+                    {pkg.price}
+                  </div>
+                </div>
+
+                <p className="text-neutral-400 text-xs font-light leading-relaxed mb-8">
+                  {pkg.tagline}
+                </p>
+
+                <ul className="space-y-3.5 flex-grow mb-8">
+                  {pkg.perks.map((perk, pIdx) => (
+                    <li key={pIdx} className="flex items-start text-xs text-neutral-300 font-normal tracking-wide">
+                      <span className="text-cyan-400 mr-2.5 font-bold">✓</span>
+                      <span>{perk}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a href="#booking" className="w-full h-11 bg-white/5 border border-white/10 text-white rounded-xl text-[11px] font-bold tracking-widest uppercase flex items-center justify-center hover:bg-white/10 transition-colors">
+                  SECURE BOOKING SLOT
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SECTION II: MEMBERSHIP ROYALTY TIERS */}
+        <section id="membership" className="max-w-7xl mx-auto px-6 py-20 scroll-mt-24">
+          <div className="border-b border-white/5 pb-6 mb-12">
+            <h2 className="text-xs font-black tracking-[0.4em] text-cyan-400 uppercase mb-2">// LOYALTY PIPELINE</h2>
+            <p className="text-3xl font-black tracking-tight text-white uppercase">TIERED PLANS</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {loyaltyPlans.map((plan, idx) => (
+              <div 
+                key={idx} 
+                className={`rounded-2xl border ${plan.accent} bg-white/[0.01] p-6 flex flex-col relative transition-all duration-300 hover:-translate-y-1`}
+                style={{ boxShadow: `0 10px 40px -10px ${plan.glow}` }}
+              >
+                <div className="mb-6">
+                  <h3 className="text-xl font-black tracking-wider uppercase mb-1">{plan.name}</h3>
+                  <p className="text-[10px] font-mono font-bold tracking-widest opacity-60 uppercase">{plan.points}</p>
+                </div>
+
+                <div className="w-full h-[1px] bg-white/5 mb-6" />
+
+                <ul className="space-y-4 flex-grow mb-8">
+                  {plan.features.map((feat, fIdx) => (
+                    <li key={fIdx} className="flex items-start text-[11px] text-neutral-300 leading-relaxed font-light">
+                      <span className="text-purple-400 mr-2 font-mono">•</span>
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* TESTIMONIAL PANEL */}
         <section className="max-w-4xl mx-auto px-6 py-12 text-center">
           <div className="p-12 rounded-3xl bg-white/[0.01] border border-white/5 backdrop-blur-md relative">
@@ -180,7 +346,7 @@ export default function Page() {
               RESERVE AN EXPERIENCE ENTRY
             </h2>
             <p className="text-neutral-300 max-w-md mx-auto mb-10 text-xs md:text-sm font-light tracking-wide leading-relaxed">
-              Coordinate directly with our operations pipeline to set up group bookings, private events, or investor tours.
+              Coordinate directly with our operations pipeline to set up group bookings, private events, or loyalty configurations.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
               <a href="tel:+919834594372" className="w-full sm:w-auto px-8 h-14 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-black rounded-xl shadow-lg shadow-pink-500/20 hover:scale-103 transition-all flex items-center justify-center text-xs tracking-widest uppercase">
@@ -233,7 +399,7 @@ export default function Page() {
 
         <div className="max-w-7xl mx-auto px-6 pt-12 mt-16 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-neutral-600 tracking-widest">
           <div>© 2026 FUNBOND CORPORATION INT. ALL RIGHTS RESERVED.</div>
-          <div className="font-mono text-neutral-700 text-[9px]">BUILD // PRODUCTION_V5.4</div>
+          <div className="font-mono text-neutral-700 text-[9px]">BUILD // PRODUCTION_V6.2</div>
         </div>
       </footer>
 
