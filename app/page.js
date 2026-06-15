@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 
 // ARENA SPACES MEDIA PACK
 const arenaSpaces = [
-  { id: '01', title: 'Racing Sims', src: 'https://lh3.googleusercontent.com/d/1v7RYujAnGTS2PNQ4Ji2UzSRMydGIsOiQ' },
-  { id: '02', title: 'Joyful Balls',src: 'https://lh3.googleusercontent.com/d/1fPzHMiUjV5vThdcV7-szJkjEjLuzb6yx' },
-  { id: '03', title: 'Bowling Zone',src: 'https://lh3.googleusercontent.com/d/1_4ZT8A4upVjrfAqTs95u54YZkJn5HQol' },
-  { id: '04', title: 'Soft Games', src: 'https://lh3.googleusercontent.com/d/1tHM-piNXPX0fsdopVAQMHlguVE4eDaUk' },
-  { id: '05', title: 'Soft Games', src: 'https://lh3.googleusercontent.com/d/12vYtYsNEa7MlzmJkmyWkpbkMo_Y5GQiu'}
+  { id: '01', label: 'Racing Sims', src: 'https://lh3.googleusercontent.com/d/1v7RYujAnGTS2PNQ4Ji2UzSRMydGIsOiQ' },
+  { id: '02', label: 'Joyful Balls',src: 'https://lh3.googleusercontent.com/d/1fPzHMiUjV5vThdcV7-szJkjEjLuzb6yx' },
+  { id: '03', label: 'Bowling Zone',src: 'https://lh3.googleusercontent.com/d/1_4ZT8A4upVjrfAqTs95u54YZkJn5HQol' },
+  { id: '04', label: 'Soft Games', src: 'https://lh3.googleusercontent.com/d/1tHM-piNXPX0fsdopVAQMHlguVE4eDaUk' },
+  { id: '05', label: 'Soft Games', src: 'https://lh3.googleusercontent.com/d/12vYtYsNEa7MlzmJkmyWkpbkMo_Y5GQiu'}
 ];
 
 const achievements = [
